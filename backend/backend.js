@@ -29,7 +29,7 @@ app.get("/inventory/search", async (req, res) => {
   if (redisRes){
     console.log("Data obtained from Redis")
     redisRes = JSON.parse(redisRes)
-    res.status(200).json({list : redisRes.item});
+    res.status(200).json({redisList: redisRes});
   }else {
     console.log("Data from public API")
     const response = await axios.get(`${URL}search.php?s=${name}`).then(response => response.data)
